@@ -5,6 +5,10 @@ read -p "Enter the filename: " filename
 
 if [[ -f "$filename" ]]; then
   echo "The file $filename exists."
+  while read line;
+  do
+	  echo $line
+  done < $filename
 else
   echo "The file $filename does not exist."
 fi
@@ -17,15 +21,18 @@ vat() {
         echo "Your tax will be $( echo "scale=2; $tax*$salary" | bc )"
 }
 
-if [[ $salary -le 30000 ]]
+if [[ $salary -lt 30000 ]]
 then
         echo "No TAXES"
+elif [[ $salary -eq 30000 ]]
+then
+	vat 5
 elif [[ $salary -gt 30000 && $salary -le 40000 ]]
 then
-        vat 5
+        vat 10
 elif [[ $salary -gt 60000 ]]
 then
-        vat 10
+        vat 15
 else
         echo "Enter valid Input"
 fi

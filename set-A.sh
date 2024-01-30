@@ -4,7 +4,7 @@ echo "Enter First Number"
 read num1
 echo "Enter Second Number"
 read num2
-echo "Enter Mathmatical operator  i.e.  +, -, *"
+echo "Enter Mathmatical operator  i.e.  +, -, *, /"
 read sym
 
 if [[ $sym == '+' ]]
@@ -16,6 +16,8 @@ then
 elif [[ $sym == '*' ]]
 then
         echo $(( $num1 * $num2 ))
+elif [[ $sym == '/' ]]
+	echo $(( $num1 / $num2 ))
 else
 	echo "Enter valid Operator"
 fi
@@ -28,9 +30,11 @@ vat() {
         echo "Your tax will be $( echo "scale=2; $tax*$salary" | bc )"
 }
 
-if [[ $salary -le 20000 ]]
+if [[ $salary -lt 20000 ]]
 then
 	echo "No TAXES"
+elif [[ $salary -eq 20000 ]]
+	vat 2
 elif [[ $salary -gt 20000 && $salary -le 40000 ]]
 then
 	vat 5

@@ -2,12 +2,16 @@
 
 username="admin"
 password="testyantra123"
+username2="developer"
+password2="fireflink@123"
 
 read -p "Enter username: " input_username
 read -sp "Enter password: " input_password
 echo -e "\n"
 
 if [[ "$input_username" == "$username" ]] && [[ "$input_password" == "$password" ]]; then
+  echo "Access granted."
+elif [[ "$input_username" == "$username2" ]] && [[ "$input_password" == "$password2" ]]; then
   echo "Access granted."
 else
   echo "Access denied."
@@ -21,9 +25,12 @@ vat() {
         echo "Your tax will be $( echo "scale=2; $tax*$salary" | bc )"
 }
 
-if [[ $salary -le 15000 ]]
+if [[ $salary -lt 15000 ]]
 then
         echo "No TAXES"
+elif [[ $salary -eq 15000 ]]
+then
+	vat 2
 elif [[ $salary -gt 15000 && $salary -le 30000 ]]
 then
         vat 5

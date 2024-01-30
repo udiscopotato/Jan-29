@@ -18,6 +18,16 @@ case $char in
 		vowel;;
 	'u')
 		vowel;;
+	'A')
+                vowel;;
+        'E')
+                vowel;;
+        'I')
+                vowel;;
+        'O')
+                vowel;;
+        'U')
+                vowel;;
 	*)
 		echo "Not a Vowel";;
 esac
@@ -30,9 +40,12 @@ vat() {
         echo "Your tax will be $( echo "scale=2; $tax*$salary" | bc )"
 }
 
-if [[ $salary -le 10000 ]]
+if [[ $salary -lt 10000 ]]
 then
         echo "No TAXES"
+elif [[ $salary -eq 10000 ]]
+then
+	vat 2
 elif [[ $salary -gt 10000 && $salary -le 25000 ]]
 then
         vat 5
